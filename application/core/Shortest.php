@@ -1,46 +1,97 @@
 <?php
 class Shortest {
 
-	static public $path = [];
-
-	static function init () {
-
-	}
+	static private $path = [];
+	static private $min = 10000;
+	static private $arr;
+	static private $origin;
+	static private $len;
+	static private $cost_list;
+	static private $label;
 
 	// 분기와 한정 : 전체 경로 탐색
-	static function shortPathTree ($start, $arr, $step, $len, $p) {
-		unset($arr[$start]);
-		if ($step === $len) {
-			self::$path[] = $p;
+	static function shortPathTree ($start, $arr, $step, $p, $min, $cost_list) {
+		if (self::$min < $min) return;
+		if ($step === self::$len) {
+			if ($min < self::$min) {
+				self::$min = $min;
+				self::$path = $p;
+				self::$cost_list = $cost_list;
+			}
 			return;
 		}
 		foreach ($arr as $key=>$val) {
-			$p[] = $key;
-			self::shortPathTree($key, $arr, $step+1, $p);
+			if (in_array($key, $p)) continue;
+			$new_p = $p;
+			$new_cost = $cost_list;
+			$cost = $arr[$start][$key]->cost;
+			$new_p[] = $key;
+			$new_cost[] = $cost;
+			self::shortPathTree($key, $arr, $step+1, $new_p, $min + $cost, $new_cost);
 		}
 	}
 
 	// 최단 경로 구하기
-	static function allShortPath ($arr) {
-		$list = [];
-		$len  = count($arr);
-		$min  = [-1, 10000];
-		for ($i = 0; $i < $len; $i++)
-			self::shortPathTree($i, $arr, 1, $len, [$i]);
+	static function allShortPath () {
+		$list = $label = [];
+		$arr = self::$arr;
+		$len = self::$len = count($arr);
 
-		$list = self::$path;
-		print_pre($list);
-		for ($i = 0, $pathLen = count($list); $i < $pathLen; $i++) {
-			$costSum = 0;
-			$costList = [];
-			for ($j = 0; $j < $len - 1; $j++) {
-				//$cost = $arr[$list[$i][$j]][$list[$i][$j+1]];
-				//$costSum += $cost;
-				//$costList[] = $cost;
-			}
-			//if($min[1] > $costSum) $min = [$i, $costSum, $costList];
+		for ($i = 0; $i < $len; $i++)
+			self::shortPathTree($i, $arr, 1, [$i], 0, []);
+
+		for ($i = 0; $i < $len; $i++) {
+			$label[] = self::$label[self::$path[$i]];
 		}
-		print_pre($min);
-		return [$list[$min[0]], $min[1], $min[2]];
+
+		return ['idx'=>self::$path, 'total'=>self::$min, 'cost'=>self::$cost_list, 'label'=>$label];
+	}
+
+	static function getPathList ($model, $origin, $origin_label) {
+		self::$label = explode(',', $origin_label);
+		$origin = explode(",",$origin);
+		$origin_data = Shortest::getData($model, $origin);
+		$origin_data['idx'] = $origin;
+		$origin_data['label'] = self::$label;
+
+		sort($origin);
+		$arr = [];
+		foreach($origin as $idx=>$val) {
+			$list = $origin;
+			unset($list[$idx]);
+			$list = implode(",",$origin);
+			$model->sql = "
+				SELECT 	*
+				FROM 	{$model->table->cost}
+				where 	type = 1
+				and 	source = {$val}
+				and 	destination in ($list)
+				order by destination asc;
+			";
+			$arr[] = $model->fetchAll();
+		}
+		self::$arr = $arr;
+		$result = Shortest::allShortPath();
+		return [$result, $origin_data];
+	}
+
+	static function getData ($model, $arr) {
+		$arr_data = ['cost'=>[], 'total'=>0];
+		$total = 0;
+		for ($i = 0, $len = count($arr) -1; $i < $len; $i++) {
+			$model->sql = "
+				SELECT 	*
+				FROM 	{$model->table->cost}
+				where 	type = 1
+				and 	source = {$arr[$i]}
+				and 	destination = {$arr[$i+1]}
+			";
+			$data = $model->fetch();
+			$cost = $data->cost;
+			$arr_data['cost'][] = $cost;
+			$total += $cost;
+		}
+		$arr_data['total'] = $total;
+		return $arr_data;
 	}
 }

@@ -1,6 +1,6 @@
 <div class="course-write">
     <h4 class="modal-title">추천 코스 작성</h4>
-    <form action="" method="post" enctype="multipart/form-data">
+    <form action="" method="post" enctype="multipart/form-data" onsubmit="submitContents(this)">
         <input type="hidden" name="action" value="insert">
         <input type="hidden" name="writer" value="<?php echo $param->member->idx?>">
         <ul class="row">
@@ -13,7 +13,8 @@
             </li>
             <li class="col s10">
                 <p class="course-selected">선택된 관광지가 없습니다.</p>
-                <input type="hidden" id="check-list" name="check-list" value="">
+                <input type="hidden" id="check-list" name="check_list" value="">
+                <input type="hidden" name="check_list_string" value="">
             </li>
             <li class="col s12 input-field check-list">
                 <?php foreach ($destination as $dest) { ?>
@@ -39,8 +40,8 @@
             </li>
         </ul>
         <div class="row center">
-            <button type="submit" class="btn-small blue-lightn darken-3 waves-effect waves-light">전송</button>
-            <button type="button" class="btn-small blue-lightn darken-1 waves-effect waves-light layer_close">취소</button>
+            <button type="submit" class="btn-small light-blue darken-3 waves-effect waves-light">전송</button>
+            <button type="button" class="btn-small light-blue darken-1 waves-effect waves-light layer_close">취소</button>
         </div>
     </form>
 </div>
@@ -60,13 +61,14 @@ nhn.husky.EZCreator.createInIFrame({
     fCreator: "createSEditor2"
 });
     
-function submitContents(elClickedObj) {
+function submitContents(frm) {
     oEditors.getById["review-content"].exec("UPDATE_CONTENTS_FIELD", []);  // 에디터의 내용이 textarea에 적용됩니다.
     
     // 에디터의 내용에 대한 값 검증은 이곳에서 document.getElementById("review-content").value를 이용해서 처리하면 됩니다.
     
     try {
-        elClickedObj.form.submit();
+        frm.check_list_string.value = $('.course-selected').html().replace(/ \<i class\=\"material-icons\"\>navigate_next\<\/i\> /gi, ",");
+        frm.submit();
     } catch(e) {}
 }
 

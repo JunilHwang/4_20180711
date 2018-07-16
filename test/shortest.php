@@ -1,10 +1,8 @@
 <?php
 	include_once("config.php");	
 	$model = new Model();
-	Shortest::init();
-
 	$arr = [1,2,3,4];
-	$res = [];
+	$res = $default = [];
 	foreach($arr as $idx=>$val) {
 		$list = $arr;
 		unset($list[$idx]);
@@ -18,6 +16,13 @@
 			order by destination asc;
 		";
 		$res[] = $model->fetchAll();
+		if ($idx < count($arr) - 1) {
+			$model->sql = "SELECT * FROM {$model->table->cost} where type = 1 and source = {$arr[$idx]} and destination = {$arr[$idx+1]}";
+			$default[] = $model->fetch();
+		}
 	}
 
-	Shortest::allShortPath($res);
+	$result = Shortest::allShortPath($res, $arr);
+
+	print_pre($default, false);
+	print_pre($result);

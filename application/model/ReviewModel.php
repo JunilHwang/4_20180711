@@ -3,10 +3,12 @@ class ReviewModel extends DefaultModel {
 
 	function getJoined () {
 		$table = $this->table;
+		$uri = UP_URL."/";
 		return "
 			SELECT * FROM (
 				SELECT	b.*,
-						f.origin, f.saved, f.uri,
+						f.origin, f.saved,
+						concat('{$uri}', f.saved) as uri,
 						t.subject as dname,
 						m.name as writer_name
 				FROM	{$table->board} b LEFT

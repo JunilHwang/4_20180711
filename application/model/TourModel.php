@@ -2,10 +2,12 @@
 class TourModel extends DefaultModel {
 
 	function getJoined () {
+		$uri = UP_URL."/";
 		return "
 			SELECT * FROM (
 				SELECT	t.*,
-						f.origin, f.saved, f.uri
+						f.origin, f.saved,
+						concat('{$uri}', f.saved) as uri
 				FROM	{$this->table->tour} t LEFT
 				JOIN 	{$this->table->file} f on f.idx = t.idx and f.tbl = '{$this->table->tour}'
 			) t
