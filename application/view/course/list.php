@@ -56,7 +56,7 @@
                     </div>
                 </li>
             </ul>
-            <p class="description"><?php echo shortContent($data->content, 200)?></p>
+            <p class="description"><?php echo shortContent($data->content, 250)?></p>
         </div>
     </article>
     <?php endforeach ?>

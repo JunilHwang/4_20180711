@@ -25,6 +25,7 @@ class ReviewController extends Controller {
 
 	function update () {
 		$this->view();
+		$this->destination = $this->model->getAllDestination();
 	}
 
 	function delete () {

@@ -35,6 +35,27 @@
     <div class="col s12">총 <?php echo $total?> 개의 관광지가 조회되었습니다</div>
 </div>
 <div class="row">
+    <div class="col s12 tag_list">
+        <h4>태그</h4>
+        <?php
+            foreach ($tag_list as $tag_data) {
+                $encode_tag = urlencode($tag_data->name);
+                $font_size = 13+$tag_data->cnt;
+                if ($tag_data->name == $param->tag) {
+                    $active = ' class="active"';
+                    $link = "{$param->get_page}/list/1/".urlencode($param->search_key);
+                    $none = " [취소]";
+                } else {
+                    $active = "";
+                    $link = "?tag={$encode_tag}";
+                    $none = "";
+                }
+                echo "<a href=\"{$link}\" style=\"font-size:{$font_size}px\"{$active}>#{$tag_data->name}{$none}</a>";
+            }
+        ?>
+    </div>
+</div>
+<div class="row">
     <?php foreach ($list as $data) { ?>
     <article class="card tourlist">
         <a href="<?php echo "{$param->get_page}/view/{$data->idx}"?>" class="mask layerOpener"></a>

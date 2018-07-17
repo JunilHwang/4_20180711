@@ -17,12 +17,14 @@ class DefaultModel extends Model {
 
 	function getListCount ($table) {
 		$this->sql = "SELECT count(idx) as cnt FROM {$table}";
+		if(isset($this->param->tag)) $this->appendTag();
 		if(isset($this->param->search_key)) $this->appendSearch();
 		return $this->fetch()->cnt;
 	}
 
 	function getList ($start, $line) {
 		$this->sql = $this->getJoined();
+		if(isset($this->param->tag)) $this->appendTag();
 		if(isset($this->param->search_key)) $this->appendSearch();
 		$this->sql .= "
 			order by idx desc

@@ -15,7 +15,8 @@
 			$this->action = isset($param[1]) ? $param[1] : NULL;
 			$this->idx = isset($param[2]) ? $param[2] : NULL;
 			$this->page_num = isset($param[2]) ? $param[2] : 1;
-			$this->search_key = isset($param[3]) ? urldecode($param[3]) : NULL;
+			$this->search_key = isset($param[3]) && $param[3] != '' ? urldecode($param[3]) : NULL;
+			$this->tag = isset($_GET['tag']) && $_GET['tag'] != '' ? urldecode($_GET['tag']) : NULL;
 			$this->include_file = isset($this->action) ? $this->action : $this->type;
 			$this->isMember = isset($_SESSION['member']);
 			$this->isSub = $this->type != 'main';

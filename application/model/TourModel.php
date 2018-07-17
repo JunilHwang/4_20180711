@@ -15,11 +15,24 @@ class TourModel extends DefaultModel {
 	}
 
 	function appendSearch () {
-		$key = urldecode($this->param->search_key);
-		$this->sql .= "
-			WHERE	subject like '%{$key}%'
-			or 		content like '%{$key}%'
+		$key = $this->param->search_key;
+		$cond = strpos(strtolower($this->sql), "where") !== false ? ' and ' : ' where ';
+		$this->sql .= "{$cond} (subject like '%{$key}%' or content like '%{$key}%')";
+	}
+
+	function appendTag () {
+		$this->sql .= " where (idx in (SELECT destination FROM {$this->table->tag} where name='{$this->param->tag}'))";
+	}
+
+	function getTagList () {
+		$this->sql = "
+			SELECT 	count(*) as cnt,
+					name
+			FROM 	{$this->table->tag}
+			group by name
+			order by cnt desc, name asc
 		";
+		return $this->fetchAll();
 	}
 
 	function keywordRegister ($key) {

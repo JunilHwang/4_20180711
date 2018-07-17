@@ -78,6 +78,10 @@ img { max-width: 100%; max-height: 100%; }
 .tour-detail .description dt { font-size: 21px; margin-bottom: 10px; }
 .tour-detail .description dd { margin-bottom: 30px; font-size: 15px; color: #666; }
 
+.tag_list h4 { font-size: 25px; margin-bottom: 10px; }
+.tag_list a { display: inline-block; margin-right: 10px; color: #005c99; }
+.tag_list a.active { color: #e50100; }
+
 /* modal */
 .layer { position: fixed; left: 0; top: 0; bottom: 0; right: 0; text-align: center; overflow: auto; display: none; z-index: 100; background: rgba(0, 0, 0, 0.5); }
 .layer .layer_box { background: #fff; text-align: left; position: relative; padding: 20px; margin: 20px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); }
@@ -111,7 +115,7 @@ img { max-width: 100%; max-height: 100%; }
 .course .info { width: calc(100% - 220px); margin-left: 20px; }
 .course .subject { font-size: 25px; color: #09f; }
 .course .writer { padding: 10px 0; }
-.course .description { font-size: 15px; color: #666; }
+.course .description { font-size: 15px; color: #666; margin-top: 15px; }
 .course .date { font-family: Arial; margin-left: 10px; font-size: 12px; }
 .course .date i { margin-top: -2px; }
 .course .path li { display: flex; }

@@ -64,6 +64,12 @@
 		dd{margin-bottom:30px;font-size:15px;color:#666;}
 	}
 }
+.tag_list{
+	h4{font-size:25px;margin-bottom:10px}
+	a{display:inline-block;margin-right:10px;color:darken($color-blue, 20%);
+		&.active{color:$color-sub}
+	}
+}
 
 /* modal */
 .layer{position:fixed;left:0;top:0;bottom:0;right:0;text-align:center;overflow:auto;display:none;z-index:100;background:fade-out(#000, 0.5);
@@ -103,7 +109,7 @@
 	.info{width:calc(100% - 220px);margin-left:20px;}
 	.subject{font-size:25px;color:$color-blue}
 	.writer{padding:10px 0;}
-	.description{font-size:15px;color:#666;}
+	.description{font-size:15px;color:#666;margin-top:15px;}
 	.date{font-family:Arial;margin-left:10px;font-size:12px;
 		i{margin-top:-2px;}
 	}
