@@ -8,8 +8,8 @@
 <?php } ?>
 <div class="row">
     <?php foreach ($list as $data):
-            $default = json_decode($data->list);
-            $shortest = json_decode($data->shortest_list);
+            $path = json_decode($data->list);
+            $path_shortest = json_decode($data->shortest_list);
         ?>
     <article class="course">
         <a href="<?php echo "{$param->get_page}/view/{$data->idx}"?>" class="mask layerOpener"></a>
@@ -20,26 +20,42 @@
                 <i class="material-icons tiny">brush</i>
                 <?php echo $data->writer_name?>
             </p>
-            <p class="list">
-                <?php
-                    $label = implode(' <i class="material-icons">navigate_next</i> ', $default->label);
-                    echo "<strong>[추천]</strong>".$label;
-                ?>
-                <span class="cost">
-                    <i class="material-icons tiny">access_time</i>
-                    <?php echo $default->total?>분 소요
-                </span>
-            </p>
-            <p class="list">
-                <?php
-                    $label = implode(' <i class="material-icons">navigate_next</i> ', $shortest->label);
-                    echo "<strong>[최단]</strong>".$label;
-                ?>
-                <span class="cost">
-                    <i class="material-icons tiny">access_time</i>
-                    <?php echo $shortest->total?>분 소요
-                </span>
-            </p>
+            <ul class="path">
+                <li>
+                    <strong class="lbl">[사용자 추천]</strong>
+                    <div class="desc">
+                        <span class="list">
+                            <?php echo implode(' <i class="material-icons">navigate_next</i> ', $path[0]->label); ?>
+                        </span>
+                        <span class="cost">
+                            <span>대중교통</span><?php echo $path[0]->total?>분 소요 /
+                            <span>자가용</span><?php echo $path[1]->total?>분 소요
+                        </span>
+                    </div>
+                </li>
+                <li>
+                    <strong class="lbl">[대중교통 최단]</strong>
+                    <div class="desc">
+                        <span class="list">
+                            <?php echo implode(' <i class="material-icons">navigate_next</i> ', $path_shortest[0]->label); ?>
+                        </span>
+                        <span class="cost">
+                            <?php echo $path_shortest[0]->total?>분 소요
+                        </span>
+                    </div>
+                </li>
+                <li>
+                    <strong class="lbl">[자가용 최단]</strong>
+                    <div class="desc">
+                        <span class="list">
+                            <?php echo implode(' <i class="material-icons">navigate_next</i> ', $path_shortest[1]->label); ?>
+                        </span>
+                        <span class="cost">
+                            <?php echo $path_shortest[1]->total?>분 소요
+                        </span>
+                    </div>
+                </li>
+            </ul>
             <p class="description"><?php echo shortContent($data->content, 200)?></p>
         </div>
     </article>

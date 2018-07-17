@@ -27,9 +27,12 @@ class CourseModel extends DefaultModel {
 				$add_sql .= ", date = now()";
 				$msg = "추가되었습니다.";
 				$url = "{$param->get_page}/list";
-				$shortest = Shortest::getPathList($this, $check_list, $check_list_string);
-				$_POST['shortest_list'] = json_encode($shortest[0]);
-				$_POST['list'] = json_encode($shortest[1]);
+
+				$shortest1 = Shortest::getPathList($this, $check_list, $check_list_string, 1);
+				$shortest2 = Shortest::getPathList($this, $check_list, $check_list_string, 2);
+				$_POST['shortest_list'] = json_encode([$shortest1[0], $shortest2[0]]);
+				$_POST['list'] = json_encode([$shortest1[1], $shortest2[1]]);
+
 				$callback = function ($model) {
 					$tbl = $model->table->course;
 					$idx = $model->lastId;
@@ -40,6 +43,12 @@ class CourseModel extends DefaultModel {
 				$add_sql .= " where idx = '{$param->idx}'";
 				$msg = "수정 되었습니다.";
 				$url = "{$param->get_page}/list";
+
+				$shortest1 = Shortest::getPathList($this, $check_list, $check_list_string, 1);
+				$shortest2 = Shortest::getPathList($this, $check_list, $check_list_string, 2);
+				$_POST['shortest_list'] = json_encode([$shortest1[0], $shortest2[0]]);
+				$_POST['list'] = json_encode([$shortest1[1], $shortest2[1]]);
+
 				$callback = function ($model) {
 					$tbl = $model->table->course;
 					$idx = $model->param->idx;

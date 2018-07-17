@@ -1,161 +1,48 @@
 <div class="course-write">
-    <h4 class="modal-title">리뷰 작성</h4>
-    <form action="" method="post">
+    <h4 class="modal-title">추천 코스 수정</h4>
+    <form action="<?php echo "{$param->get_page}/update/{$param->idx}"?>" method="post" enctype="multipart/form-data" onsubmit="submitContents(this)">
+        <input type="hidden" name="action" value="update">
         <ul class="row">
-            <li class="col s2 input-field">
-                <input id="course_writer" name="writer" type="text" class="validate" required>
-                <label for="course_writer">작성자</label>
-            </li>
-            <li class="col s10 input-field">
-                <input id="course_subject" name="subject" type="text" class="validate" required>
-                <label for="course_subject">제목</label>
+            <li class="col s12 input-field">
+                <input id="course_subject" name="subject" type="text" class="validate" value="<?php echo $data->subject?>" required>
+                <label for="course_subject" class="active">제목</label>
             </li>
             <li class="col s2">
                 코스 선택
             </li>
             <li class="col s10">
-                <p class="course-selected">선택된 관광지가 없습니다.</p>
-                <input type="hidden" id="check-list" name="check-list" value="">
+                <p class="course-selected">
+                    <?php echo implode(' <i class="material-icons">navigate_next</i> ', $path->label); ?>
+                </p>
+                <input type="hidden" id="check-list" name="check_list" value="<?php echo implode(',', $path->idx); ?>">
+                <input type="hidden" name="check_list_string" value="<?php echo implode(',', $path->label)?>">
             </li>
             <li class="col s12 input-field check-list">
+                <?php foreach ($destination as $dest) { ?>
                 <p>
                     <label>
-                        <input type="checkbox" value="1">
-                        <span>Lorem</span>
+                        <input type="checkbox" value="<?php echo $dest->idx?>"<?php if (in_array($dest->idx, $path->idx)) echo ' checked' ?>>
+                        <span><?php echo $dest->subject?></span>
                     </label>
                 </p>
-                <p>
-                    <label>
-                        <input type="checkbox" value="2">
-                        <span>ipsum</span>
-                    </label>
-                </p>
-                <p>
-                    <label>
-                        <input type="checkbox" value="3">
-                        <span>dolor</span>
-                    </label>
-                </p>
-                <p>
-                    <label>
-                        <input type="checkbox" value="4">
-                        <span>sit</span>
-                    </label>
-                </p>
-                <p>
-                    <label>
-                        <input type="checkbox" value="5">
-                        <span>amet</span>
-                    </label>
-                </p>
-                <p>
-                    <label>
-                        <input type="checkbox" value="6">
-                        <span>consectetur</span>
-                    </label>
-                </p>
-                <p>
-                    <label>
-                        <input type="checkbox" value="7">
-                        <span>adipisicing</span>
-                    </label>
-                </p>
-                <p>
-                    <label>
-                        <input type="checkbox" value="8">
-                        <span>elit</span>
-                    </label>
-                </p>
-                <p>
-                    <label>
-                        <input type="checkbox" value="9">
-                        <span>Ratione</span>
-                    </label>
-                </p>
-                <p>
-                    <label>
-                        <input type="checkbox" value="10">
-                        <span>magni</span>
-                    </label>
-                </p>
-                <p>
-                    <label>
-                        <input type="checkbox" value="11">
-                        <span>eius</span>
-                    </label>
-                </p>
-                <p>
-                    <label>
-                        <input type="checkbox" value="12">
-                        <span>mollitia</span>
-                    </label>
-                </p>
-                <p>
-                    <label>
-                        <input type="checkbox" value="13">
-                        <span>natus</span>
-                    </label>
-                </p>
-                <p>
-                    <label>
-                        <input type="checkbox" value="14">
-                        <span>deserunt</span>
-                    </label>
-                </p>
-                <p>
-                    <label>
-                        <input type="checkbox" value="15">
-                        <span>accusantium</span>
-                    </label>
-                </p>
-                <p>
-                    <label>
-                        <input type="checkbox" value="16">
-                        <span>debitis</span>
-                    </label>
-                </p>
-                <p>
-                    <label>
-                        <input type="checkbox" value="17">
-                        <span>modi</span>
-                    </label>
-                </p>
-                <p>
-                    <label>
-                        <input type="checkbox" value="18">
-                        <span>libero</span>
-                    </label>
-                </p>
-                <p>
-                    <label>
-                        <input type="checkbox" value="19">
-                        <span>autem</span>
-                    </label>
-                </p>
-                <p>
-                    <label>
-                        <input type="checkbox" value="20">
-                        <span>impedit</span>
-                    </label>
-                </p>
+                <?php } ?>
             </li>
             <li class="col s12 input-field file-field">
                 <div class="btn">
                     <span>대표이미지</span>
-                    <input type="file" accept="image/*" multiple>
+                    <input type="file" name="file" accept="image/*" multiple>
                 </div>
                 <div class="file-path-wrapper">
-                    <input class="file-path validate" type="text">
+                    <input class="file-path validate" type="text" value="<?php echo $data->origin?>">
                 </div>
             </li>
             <li class="col s12">
-                <textarea id="review-content" name="content" cols="80" rows="20" style="width:100%;height:300px;"></textarea>
+                <textarea id="review-content" name="content" cols="80" rows="20" style="width:100%;height:300px;"><?php echo $data->content?></textarea>
             </li>
         </ul>
         <div class="row center">
             <button type="submit" class="btn-small light-blue darken-3 waves-effect waves-light">전송</button>
-            <button type="button" class="btn-small light-blue darken-1 waves-effect waves-light layer_before">이전</button>
-            <button type="button" class="btn-small light-blue darken-1 waves-effect waves-light layer_close">닫기</button>
+            <button type="button" class="btn-small light-blue darken-1 waves-effect waves-light layer_close">취소</button>
         </div>
     </form>
 </div>
@@ -175,14 +62,14 @@ nhn.husky.EZCreator.createInIFrame({
     fCreator: "createSEditor2"
 });
     
-function submitContents(elClickedObj) {
+function submitContents(frm) {
     oEditors.getById["review-content"].exec("UPDATE_CONTENTS_FIELD", []);  // 에디터의 내용이 textarea에 적용됩니다.
     
     // 에디터의 내용에 대한 값 검증은 이곳에서 document.getElementById("review-content").value를 이용해서 처리하면 됩니다.
     
     try {
-        elClickedObj.form.submit();
+        frm.check_list_string.value = $('.course-selected').html().replace(/ \<i class\=\"material-icons\"\>navigate_next\<\/i\> /gi, ",");
+        frm.submit();
     } catch(e) {}
 }
-
 </script>

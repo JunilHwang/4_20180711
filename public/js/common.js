@@ -69,6 +69,15 @@ function courseSelect () {
 	let stackValue = [],
 		stackText = []
 
+	function update (obj) {
+		let val = obj.form.check_list.value
+		let lbl = obj.form.check_list_string.value
+		if (val.length > 0 && stackValue.length == 0 ) {
+			stackValue = val.split(',')
+			stackText  = lbl.split(',')
+		}
+	}
+
 	function set () {
 		const targetText = $('.course-selected')[0]
 		const targetInput = $('#check-list')[0]
@@ -89,6 +98,7 @@ function courseSelect () {
 	}
 
 	return function () {
+		update(this)
 		get(this)
 		set()
 	}

@@ -13,6 +13,7 @@ class Table {
 		$this->cost = $prefix.'time_cost';
 		$this->tour = $prefix.'tourist_destination';
 		$this->tag = $prefix.'tourist_tag';
+		$this->searched = $prefix.'searched';
 	}
 
 	// initialize

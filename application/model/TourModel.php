@@ -14,6 +14,40 @@ class TourModel extends DefaultModel {
 		";
 	}
 
+	function appendSearch () {
+		$key = urldecode($this->param->search_key);
+		$this->sql .= "
+			WHERE	subject like '%{$key}%'
+			or 		content like '%{$key}%'
+		";
+	}
+
+	function keywordRegister ($key) {
+		$tbl = $this->table;
+		$member = $this->param->member;
+
+		if($key == "") return;
+
+		if (isset($_SESSION['key_list'])) {
+			$_SESSION['key_list'][] = $key;
+			$sql = "
+				UPDATE {$tbl->searched} SET
+				key_list = ?
+				WHERE member = ?
+				and   cnt 	 = ?
+			";
+		} else {
+			$_SESSION['key_list'] = [$key];
+			$sql = "INSERT INTO {$tbl->searched} SET key_list = ?, member = ?, cnt = ?";
+		}
+
+		$key_list = json_encode($_SESSION['key_list']);
+
+		$this->execArr = [$key_list, $member->idx, $member->cnt];
+		$this->sql = $sql;
+		$this->query();
+	}
+
 	function tagInsert ($idx) {
 		$tags = explode(" ", $_POST['tag']);
 		$sql = "";

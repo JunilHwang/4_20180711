@@ -3,12 +3,29 @@
     <div class="search_frm">
         <form action="" method="post">
             <fieldset><!-- <legend>관광지 검색</legend> -->
-                <input type="text" id="search_key" name="search_key" placeholder="검색어를 입력해주세요" size="50" class="browser-default">
+                <input type="text" id="search_key" name="key" placeholder="검색어를 입력해주세요" size="50" value="<?php echo $param->search_key?>" class="browser-default">
                 <button type="submit" class="btn blue waves-effect waves-light">검색</button>
             </fieldset>
         </form>
     </div>
 </div>
+<?php if (isset($relatedList) && count($relatedList)) { ?>
+<div class="row">
+    <div class="col s12 relatedList">
+        <h4 class="lbl">연관검색어</h4>
+        <div class="desc">
+            <?php foreach ($relatedList as $num=>$key_list): ?>
+            <p>
+                <strong>(<?php echo $num+1?>)</strong>
+                <?php foreach ($key_list as $key): ?>
+                <a href="<?php echo "{$param->get_page}/list/{$param->page_num}/".urlencode($key)?>"><?php echo $key?></a>
+                <?php endforeach ?>
+            </p>
+            <?php endforeach ?>
+        </div>
+    </div>
+</div>
+<?php } ?>
 <div class="row">
     <!-- <div class="col s12">
         <div class="right">

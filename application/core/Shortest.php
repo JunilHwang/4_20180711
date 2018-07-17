@@ -1,13 +1,18 @@
 <?php
 class Shortest {
 
-	static private $path = [];
-	static private $min = 10000;
+	static private $path;
+	static private $min;
 	static private $arr;
 	static private $origin;
 	static private $len;
 	static private $cost_list;
 	static private $label;
+
+	// 초기화
+	static function init () {
+		self::$path = [];
+	}
 
 	// 분기와 한정 : 전체 경로 탐색
 	static function shortPathTree ($start, $arr, $step, $p, $min, $cost_list) {
@@ -47,10 +52,11 @@ class Shortest {
 		return ['idx'=>self::$path, 'total'=>self::$min, 'cost'=>self::$cost_list, 'label'=>$label];
 	}
 
-	static function getPathList ($model, $origin, $origin_label) {
+	static function getPathList ($model, $origin, $origin_label, $type) {
+		self::$min = 10000;
 		self::$label = explode(',', $origin_label);
 		$origin = explode(",",$origin);
-		$origin_data = Shortest::getData($model, $origin);
+		$origin_data = Shortest::getData($model, $origin, $type);
 		$origin_data['idx'] = $origin;
 		$origin_data['label'] = self::$label;
 
@@ -63,7 +69,7 @@ class Shortest {
 			$model->sql = "
 				SELECT 	*
 				FROM 	{$model->table->cost}
-				where 	type = 1
+				where 	type = {$type}
 				and 	source = {$val}
 				and 	destination in ($list)
 				order by destination asc;
@@ -75,14 +81,14 @@ class Shortest {
 		return [$result, $origin_data];
 	}
 
-	static function getData ($model, $arr) {
+	static function getData ($model, $arr, $type) {
 		$arr_data = ['cost'=>[], 'total'=>0];
 		$total = 0;
 		for ($i = 0, $len = count($arr) -1; $i < $len; $i++) {
 			$model->sql = "
 				SELECT 	*
 				FROM 	{$model->table->cost}
-				where 	type = 1
+				where 	type = {$type}
 				and 	source = {$arr[$i]}
 				and 	destination = {$arr[$i+1]}
 			";

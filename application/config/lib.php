@@ -94,7 +94,7 @@ function fileUpload ($tbl, $idx, $file, $model, $update = false) {
 function shortContent ($str, $len) {
 	$str = strip_tags($str);
 	if (strlen($str) > $len)
-		$str = mb_substr($str, 0, $len, 'UTF-8')." [더보기]";
+		$str = mb_substr($str, 0, $len, 'UTF-8')." ... [더보기]";
 	return $str;
 }
 

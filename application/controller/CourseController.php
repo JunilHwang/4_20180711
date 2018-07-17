@@ -3,6 +3,10 @@ class CourseController extends Controller {
 
 	function view () {
 		$this->setAjax();
+		$this->data = $this->model->getData();
+		$this->path = json_decode($this->data->list);
+		$this->path_shortest = json_decode($this->data->shortest_list);
+		$this->path_length = count($this->path[0]->label);
 	}
 
 	function list () {
@@ -22,6 +26,17 @@ class CourseController extends Controller {
 	}
 
 	function update () {
-		$this->setAjax();
+		$this->view();
+		$this->data = $this->model->getData();
+		$path = json_decode($this->data->list);
+		$this->path = $path[0];
+		$this->destination = $this->model->getAllDestination();
+	}
+
+	function delete () {
+		$this->model->deleteData($this->model->table->course);
+		alert('삭제되었습니다.');
+		move();
+		exit;
 	}
 }

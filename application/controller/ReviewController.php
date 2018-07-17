@@ -10,6 +10,7 @@ class ReviewController extends Controller {
 		$this->site_title = "{$this->param->site_title} &gt; 관광지 리뷰";
 		$param = $this->param;
 		$model = $this->model;
+
 		$this->total = $total = $model->getListCount($this->model->table->board);
 		$line = 8;
 		$this->list = $model->getList(($param->page_num - 1) * $line, $line);
@@ -24,5 +25,12 @@ class ReviewController extends Controller {
 
 	function update () {
 		$this->view();
+	}
+
+	function delete () {
+		$this->model->deleteData($this->model->table->board);
+		alert('삭제되었습니다.');
+		move();
+		exit;
 	}
 }
