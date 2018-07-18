@@ -12,7 +12,7 @@ class TourController extends Controller {
 		$model = $this->model;
 
 		if (isset($_POST['key'])) {
-			if ($param->isMember) $model->keywordRegister($_POST['key']);
+			$model->keywordRegister($_POST['key']);
 			move("{$param->get_page}/list/1/".urlencode($_POST['key']));
 		}
 		

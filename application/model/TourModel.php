@@ -37,27 +37,25 @@ class TourModel extends DefaultModel {
 
 	function keywordRegister ($key) {
 		$tbl = $this->table;
-		$member = $this->param->member;
-
 		if($key == "") return;
+		$last = $this->fetch("SELECT * FROM {$tbl->searched} order by idx desc limit 1");
+		$key_list = $last ? json_decode($last->key_list) : [];
 
-		if (isset($_SESSION['key_list'])) {
-			$_SESSION['key_list'][] = $key;
-			$sql = "
-				UPDATE {$tbl->searched} SET
-				key_list = ?
-				WHERE member = ?
-				and   cnt 	 = ?
-			";
+		// 검색 기록이 없을경우 or 마지막 검색어 리스트에 현재 검색 키워드가 존재할 경우
+		if ($last === false || in_array($key, $key_list)) {
+			// 새로운 검색어 리스트 추가
+			$sql = "INSERT INTO {$tbl->searched} SET key_list = ?";
+			$key_list = json_encode([$key]);
+			$execArr = [$key_list];
 		} else {
-			$_SESSION['key_list'] = [$key];
-			$sql = "INSERT INTO {$tbl->searched} SET key_list = ?, member = ?, cnt = ?";
+			// 현재 검색어 리스트에 현재 키워드를 추가
+			$key_list[] = $key;
+			$key_list = json_encode($key_list);
+			$sql = "UPDATE {$tbl->searched} SET key_list = ? where idx = ?";
+			$execArr = [$key_list, $last->idx];
 		}
-
-		$key_list = json_encode($_SESSION['key_list']);
-
-		$this->execArr = [$key_list, $member->idx, $member->cnt];
 		$this->sql = $sql;
+		$this->execArr = $execArr;
 		$this->query();
 	}
 

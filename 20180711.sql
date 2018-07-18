@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- 생성 시간: 18-07-17 16:13
+-- 생성 시간: 18-07-18 03:34
 -- 서버 버전: 10.1.25-MariaDB
 -- PHP 버전: 7.1.7
 
@@ -43,7 +43,8 @@ CREATE TABLE `su_board` (
 --
 
 INSERT INTO `su_board` (`idx`, `destination`, `subject`, `writer`, `content`, `date`, `hit`) VALUES
-(1, 1, '힐링 제대로 하고 왔어요', 1, '<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab doloribus modi reiciendis magnam soluta architecto officiis nisi cum ipsam, est optio dolorum nostrum porro. Nesciunt iusto consectetur, explicabo minus odit magni sunt magnam enim est perspiciatis sequi deserunt nemo, incidunt nulla excepturi porro corporis. Architecto quisquam dolor, obcaecati tempora consequatur laudantium veritatis nostrum cumque, nobis, doloremque, inventore illo magnam. Officiis in blanditiis maiores deserunt repellat laudantium quae aliquam quos natus, inventore enim doloremque cupiditate esse adipisci tenetur eaque. Labore, fugit. Aperiam sed neque rem quasi aliquid doloribus adipisci reiciendis cumque dolorum repudiandae ex, asperiores amet in temporibus! Repellendus et perspiciatis recusandae nam a quisquam, sunt corrupti cupiditate officiis magni. Voluptatum, fugiat, officiis omnis nostrum accusantium facere dolorem neque culpa ratione quaerat nesciunt temporibus veritatis esse cupiditate commodi quod, sequi quia illum amet qui reiciendis illo hic eos. Odio illo unde laboriosam possimus soluta eum accusamus quasi a cumque quae dolor quaerat quidem fugit minus alias similique sed incidunt, cum atque, facilis qui! Id laudantium et esse ullam deleniti eum, accusamus provident beatae quis neque dolore ipsam, sit voluptatum tempore, ratione incidunt modi ad inventore est ab expedita vel? Est at ea facilis similique quo aliquam vero necessitatibus hic aperiam magni.&nbsp;</p><p>&nbsp;</p><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab doloribus modi reiciendis magnam soluta architecto officiis nisi cum ipsam, est optio dolorum nostrum porro. Nesciunt iusto consectetur, explicabo minus odit magni sunt magnam enim est perspiciatis sequi deserunt nemo, incidunt nulla excepturi porro corporis. Architecto quisquam dolor, obcaecati tempora consequatur laudantium veritatis nostrum cumque, nobis, doloremque, inventore illo magnam. Officiis in blanditiis maiores deserunt repellat laudantium quae aliquam quos natus, inventore enim doloremque cupiditate esse adipisci tenetur eaque. Labore, fugit. Aperiam sed neque rem quasi aliquid doloribus adipisci reiciendis cumque dolorum repudiandae ex, asperiores amet in temporibus! Repellendus et perspiciatis recusandae nam a quisquam, sunt corrupti cupiditate officiis magni. Voluptatum, fugiat, officiis omnis nostrum accusantium facere dolorem neque culpa ratione quaerat nesciunt temporibus veritatis esse cupiditate commodi quod, sequi quia illum amet qui reiciendis illo hic eos. Odio illo unde laboriosam possimus soluta eum accusamus quasi a cumque quae dolor quaerat quidem fugit minus alias similique sed incidunt, cum atque, facilis qui! Id laudantium et esse ullam deleniti eum, accusamus provident beatae quis neque dolore ipsam, sit voluptatum tempore, ratione incidunt modi ad inventore est ab expedita vel? Est at ea facilis similique quo aliquam vero necessitatibus hic aperiam magni.&nbsp;</p>', '2018-07-17 21:02:06', 0);
+(1, 1, '힐링 제대로 하고 왔어요', 1, '<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab doloribus modi reiciendis magnam soluta architecto officiis nisi cum ipsam, est optio dolorum nostrum porro. Nesciunt iusto consectetur, explicabo minus odit magni sunt magnam enim est perspiciatis sequi deserunt nemo, incidunt nulla excepturi porro corporis. Architecto quisquam dolor, obcaecati tempora consequatur laudantium veritatis nostrum cumque, nobis, doloremque, inventore illo magnam. Officiis in blanditiis maiores deserunt repellat laudantium quae aliquam quos natus, inventore enim doloremque cupiditate esse adipisci tenetur eaque. Labore, fugit. Aperiam sed neque rem quasi aliquid doloribus adipisci reiciendis cumque dolorum repudiandae ex, asperiores amet in temporibus! Repellendus et perspiciatis recusandae nam a quisquam, sunt corrupti cupiditate officiis magni. Voluptatum, fugiat, officiis omnis nostrum accusantium facere dolorem neque culpa ratione quaerat nesciunt temporibus veritatis esse cupiditate commodi quod, sequi quia illum amet qui reiciendis illo hic eos. Odio illo unde laboriosam possimus soluta eum accusamus quasi a cumque quae dolor quaerat quidem fugit minus alias similique sed incidunt, cum atque, facilis qui! Id laudantium et esse ullam deleniti eum, accusamus provident beatae quis neque dolore ipsam, sit voluptatum tempore, ratione incidunt modi ad inventore est ab expedita vel? Est at ea facilis similique quo aliquam vero necessitatibus hic aperiam magni.&nbsp;</p><p>&nbsp;</p><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab doloribus modi reiciendis magnam soluta architecto officiis nisi cum ipsam, est optio dolorum nostrum porro. Nesciunt iusto consectetur, explicabo minus odit magni sunt magnam enim est perspiciatis sequi deserunt nemo, incidunt nulla excepturi porro corporis. Architecto quisquam dolor, obcaecati tempora consequatur laudantium veritatis nostrum cumque, nobis, doloremque, inventore illo magnam. Officiis in blanditiis maiores deserunt repellat laudantium quae aliquam quos natus, inventore enim doloremque cupiditate esse adipisci tenetur eaque. Labore, fugit. Aperiam sed neque rem quasi aliquid doloribus adipisci reiciendis cumque dolorum repudiandae ex, asperiores amet in temporibus! Repellendus et perspiciatis recusandae nam a quisquam, sunt corrupti cupiditate officiis magni. Voluptatum, fugiat, officiis omnis nostrum accusantium facere dolorem neque culpa ratione quaerat nesciunt temporibus veritatis esse cupiditate commodi quod, sequi quia illum amet qui reiciendis illo hic eos. Odio illo unde laboriosam possimus soluta eum accusamus quasi a cumque quae dolor quaerat quidem fugit minus alias similique sed incidunt, cum atque, facilis qui! Id laudantium et esse ullam deleniti eum, accusamus provident beatae quis neque dolore ipsam, sit voluptatum tempore, ratione incidunt modi ad inventore est ab expedita vel? Est at ea facilis similique quo aliquam vero necessitatibus hic aperiam magni.&nbsp;</p>', '2018-07-17 21:02:06', 0),
+(2, 1, 'test', 2, '<p>&nbsp;</p>', '2018-07-18 10:03:11', 0);
 
 -- --------------------------------------------------------
 
@@ -106,6 +107,7 @@ CREATE TABLE `su_file` (
 
 INSERT INTO `su_file` (`tbl`, `idx`, `origin`, `saved`, `date`, `uri`) VALUES
 ('su_board', 1, 'odong1.jpg', '1531828926_76446.jpg', '2018-07-17 21:02:06', '/webskills/4_20180711/public/upload/1531828926_76446.jpg'),
+('su_board', 2, '1531708094_99165.jpg', '1531875791_75784.jpg', '2018-07-18 10:03:11', '/webskills/4_20180711/public/upload/1531875791_75784.jpg'),
 ('su_course', 1, 'odong1.jpg', '1531828588_28969.jpg', '2018-07-17 20:56:28', '/webskills/4_20180711/public/upload/1531828588_28969.jpg'),
 ('su_tourist_destination', 1, 'odong2.jpg', '1531703723_45304.jpg', '2018-07-16 10:15:23', '/webskills/2018_national/su/4_20180711/public/upload/1531703723_45304.jpg'),
 ('su_tourist_destination', 2, 'geomundo2.jpg', '1531704999_65792.jpg', '2018-07-16 10:36:39', '/webskills/2018_national/su/4_20180711/public/upload/1531704999_65792.jpg'),
@@ -153,7 +155,8 @@ CREATE TABLE `su_member` (
 --
 
 INSERT INTO `su_member` (`idx`, `id`, `pw`, `name`, `email`, `lv`, `cnt`) VALUES
-(1, 'test', '861f194e9d6118f3d942a72be3e51749', '테스트', 'a@a.a', 0, 12);
+(1, 'test', '861f194e9d6118f3d942a72be3e51749', '테스트', 'a@a.a', 0, 14),
+(2, 'test2', 'b6a3f53f9e3831e36121296b60485041', '1234', '1234@1234.1234', 0, 1);
 
 -- --------------------------------------------------------
 
@@ -162,8 +165,7 @@ INSERT INTO `su_member` (`idx`, `id`, `pw`, `name`, `email`, `lv`, `cnt`) VALUES
 --
 
 CREATE TABLE `su_searched` (
-  `member` int(11) NOT NULL,
-  `cnt` int(11) NOT NULL,
+  `idx` int(11) NOT NULL,
   `key_list` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -171,15 +173,19 @@ CREATE TABLE `su_searched` (
 -- 테이블의 덤프 데이터 `su_searched`
 --
 
-INSERT INTO `su_searched` (`member`, `cnt`, `key_list`) VALUES
-(1, 3, '[\"\\uac00\",\"\\uac00\",\"\\ub098\",\"\\ub098\",\"\\ub0ad\",\"\\ud558\",\"\\uacf5\\ub8e1\",\"\\uacf5\\ub8e1\",\"\\uc5ec\\uc790\",\"\\uc5ec\\uc218\"]'),
-(1, 4, '[\"a\",\"b\",\"c\",\"d\",\"e\",\"a\"]'),
-(1, 5, '[\"a\",\"b\",\"c\"]'),
-(1, 6, '[\"b\",\"c\",\"d\"]'),
-(1, 7, '[\"e\",\"c\",\"d\",\"e\"]'),
-(1, 8, '[\"b\",\"c\",\"d\",\"e\"]'),
-(1, 9, '[\"\\ub0ad\\ub3c4\",\"\\uacf5\\ub8e1\",\"\\ubc31\\uc57c\",\"\\ub3cc\\uc0b0\",\"\\uc5ec\\uc218\",\"\\uc57c\\uacbd\",\"\\ub3cc\\uc0b0\",\"\\uc774\\uc21c\\uc2e0\",\"\\uc12c\",\"\\uc5ec\\ud589\",\"\\ud5a5\\uc77c\\uc554\",\"\\uc624\\ub3d9\\ub3c4\",\"\\uad6c\\ubd09\\uc0b0\",\"a\",\"\\ub0ad\\ub3c4\",\"\\ubc31\\uc57c\\ub3c4\",\"\\ub0ad\\ub3c4\",\"\\ubc31\\uc57c\\ub3c4\",\"\\ub098\\ub3d9\",\"\\ub0ad\\ub3c4\",\"\\ubc31\\uc57c\\ub3c4\",\"\\ub4f1\\uc0b0\",\"\\uc12c\",\"\\uc12c\",\"\\ub4f1\\uc0b0\",\"\\uad6c\\ubd09\\uc0b0\",\"\\uc0b0\",\"\\ub4f1\\uc0b0\",\"\\uc9c4\\ub2ec\\ub798\",\"\\ub4f1\\uc0b0\",\"b\",\"\\ub0ad\\ub3c4\",\"\\uacf5\\ub8e1\",\"\\ub3cc\\uc0b0\",\"\\ubc31\\ud638\\uc0b0\"]'),
-(1, 10, '[\"\\uc5ec\\uc790\\ub3c4\",\"\\uc5ec\\uc790\",\"\\uc5ec\\uc218\",\"\\ubc14\\ub2e4\",\"\\uc5ec\\uc218\"]');
+INSERT INTO `su_searched` (`idx`, `key_list`) VALUES
+(1, '[\"l\",\"o\",\"r\",\"e\",\"m\",\"i\",\"p\",\"s\",\"u\"]'),
+(2, '[\"m\",\"d\",\"o\",\"l\"]'),
+(3, '[\"o\",\"r\",\"s\",\"i\",\"t\",\"a\",\"m\",\"e\",\"c\"]'),
+(4, '[\"t\",\"e\"]'),
+(5, '[\"t\",\"u\",\"r\",\"a\",\"d\",\"i\",\"p\"]'),
+(6, '[\"i\",\"s\"]'),
+(7, '[\"i\",\"c\"]'),
+(8, '[\"i\",\"n\",\"g\",\"e\",\"l\"]'),
+(9, '[\"i\",\"t\",\"e\",\"x\",\"p\"]'),
+(10, '[\"e\",\"d\",\"i\",\"t\",\"a\"]'),
+(11, '[\"e\",\"s\"]'),
+(12, '[\"s\",\"e\",\"m\",\"r\"]');
 
 -- --------------------------------------------------------
 
@@ -1545,7 +1551,7 @@ ALTER TABLE `su_member`
 -- 테이블의 인덱스 `su_searched`
 --
 ALTER TABLE `su_searched`
-  ADD PRIMARY KEY (`member`,`cnt`);
+  ADD PRIMARY KEY (`idx`);
 
 --
 -- 테이블의 인덱스 `su_tourist_destination`
@@ -1567,7 +1573,7 @@ ALTER TABLE `su_tourist_tag`
 -- 테이블의 AUTO_INCREMENT `su_board`
 --
 ALTER TABLE `su_board`
-  MODIFY `idx` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `idx` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- 테이블의 AUTO_INCREMENT `su_comment`
 --
@@ -1582,7 +1588,12 @@ ALTER TABLE `su_course`
 -- 테이블의 AUTO_INCREMENT `su_member`
 --
 ALTER TABLE `su_member`
-  MODIFY `idx` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `idx` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+--
+-- 테이블의 AUTO_INCREMENT `su_searched`
+--
+ALTER TABLE `su_searched`
+  MODIFY `idx` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 --
 -- 테이블의 AUTO_INCREMENT `su_tourist_destination`
 --

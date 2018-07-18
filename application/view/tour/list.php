@@ -3,7 +3,7 @@
     <div class="search_frm">
         <form action="" method="post">
             <fieldset><!-- <legend>관광지 검색</legend> -->
-                <input type="text" id="search_key" name="key" placeholder="검색어를 입력해주세요" size="50" value="<?php echo $param->search_key?>" class="browser-default">
+                <input type="text" id="search_key" name="key" placeholder="검색어를 입력해주세요" size="50" value="<?php echo $param->search_key?>" class="browser-default" tabindex="1">
                 <button type="submit" class="btn blue waves-effect waves-light">검색</button>
             </fieldset>
         </form>
